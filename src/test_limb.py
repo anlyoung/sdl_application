@@ -25,7 +25,9 @@ def main():
     testLimb.set_joint_positions(positions)
     while not rospy.is_shutdown():
       print("node is up")
+      testLimb.set_joint_positions(positions)
       rate.sleep()
+
 
 if __name__ == '__main__':
     main()

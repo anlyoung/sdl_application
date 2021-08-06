@@ -1,0 +1,12 @@
+<launch>
+    <include file="$(find sdl_application)/launch/sdl_gazebo_sim.launch">
+
+    </include>
+
+    <node name="controller_handoff" pkg="sdl_interface" type="controller_handoff.py"/>
+
+    <node name="limb_tester" pkg="sdl_application" type="test_limb.py"/>
+    
+    
+
+</launch>
