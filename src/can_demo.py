@@ -71,6 +71,9 @@ def marker_position(data):
     elif not locked and state == "picked_up":
         open_gripper()
         state = "dropped_off"
+        rospy.sleep(1)
+        fold_arm()
+        go_to_can()
 
 
 def arm_to_can(data):
