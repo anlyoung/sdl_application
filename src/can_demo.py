@@ -14,7 +14,7 @@ def main():
     global pose_pub
     global status_sub
     global arm_pub
-    global left_gripper_pub
+    global gripper_pub
 
     global attach_srv
     global detach_srv
@@ -22,7 +22,7 @@ def main():
     pose_pub = Publisher("move_base_simple/goal", PoseStamped, queue_size=10)
     arm_pub = Publisher("/ur_arm/moveit/goal_pose", Pose, queue_size=1)
     arm_status_sub = Subscriber("/move_group/status", GoalStatusArray, arm_status)
-    left_gripper_pub = Publisher("/left_gripper_position_controller/command", Float64, queue_size=1)
+    gripper_pub = Publisher("/gripper_position_controller/command", Float64, queue_size=1)
 
     attach_srv = rospy.ServiceProxy('/link_attacher_node/attach', Attach)
     detach_srv = rospy.ServiceProxy('/link_attacher_node/detach', Attach)
@@ -124,13 +124,13 @@ def fold_arm():
     rospy.sleep(5)
 
 def open_gripper():
-    global left_gripper_pub
-    left_gripper_pub.publish(0)
+    global gripper_pub
+    gripper_pub.publish(0)
     detach_cube()
 
 def close_gripper():
-    global left_gripper_pub
-    left_gripper_pub.publish(1.5)
+    global gripper_pub
+    gripper_pub.publish(1.5)
     attach_cube()
 
 def detach_cube():

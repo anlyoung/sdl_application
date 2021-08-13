@@ -12,13 +12,12 @@ def main():
     global pose_pub
     global status_sub
     global arm_pub
-    global left_gripper_pub
-    global right_gripper_pub
+    global gripper_pub
+
 
     pose_pub = Publisher("move_base_simple/goal", PoseStamped, queue_size=10)
     arm_pub = Publisher("/ur_arm/moveit/goal_pose", Pose, queue_size=1)
-    left_gripper_pub = Publisher("/left_gripper_position_controller/command", Float64, queue_size=1)
-    right_gripper_pub = Publisher("/right_gripper_position_controller/command", Float64, queue_size=1)
+    gripper_pub = Publisher("/gripper_position_controller/command", Float64, queue_size=1)
 
     # Publishers need some time to get started
     rospy.sleep(1)
@@ -99,16 +98,12 @@ def fold_arm():
     rospy.sleep(5)
 
 def open_gripper():
-    global left_gripper_pub
-    global right_gripper_pub
-    left_gripper_pub.publish(0)
-    right_gripper_pub.publish(1.5)
+    global gripper_pub
+    gripper_pub.publish(0)
 
 def close_gripper():
-    global left_gripper_pub
-    global right_gripper_pub
-    left_gripper_pub.publish(1.5)
-    right_gripper_pub.publish(-.3)
+    global gripper_pub
+    gripper_pub.publish(1.5)
 
 if __name__ == "__main__":
     rospy.init_node("mir_nav")
