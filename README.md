@@ -43,5 +43,5 @@ In `src/can_demo.py`, a [plugin](https://github.com/roboticsgroup/roboticsgroup_
 
 ## Issues
 Robot teleports (likely due to the plugin that attaches the gripper to the cube)
-MoveIt fails because the joint position is not in the expected spot
+MoveIt fails because the arm position is not in the expected spot
 The tables are empty beneath, which prevents the MIR from being able to detect them

@@ -32,7 +32,7 @@
     </include>
 
     <!-- Load URDF -->
-    <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find sdl_application)/urdf/sdl_robot.urdf.xacro' prefix:=$(arg prefix)" />
+    <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find sdl_robot_description)/urdf/sdl_robot.urdf.xacro' prefix:=$(arg prefix)" />
 
     <!-- Spawn the robot into Gazebo -->
     <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -model $(arg model_name)
@@ -63,7 +63,7 @@
 
     <!-- Visualization of navigation and Kinect camera-->
     <group if="$(eval map_rviz)">
-        <node type="rviz" name="map_rviz" pkg="rviz" args="-d $(find mir_navigation)/rviz/navigation.rviz" />
+        <node type="rviz" name="map_rviz" pkg="rviz" args="-d $(find sdl_robot_description)/cfg/navigation.rviz" />
     </group>
 
     <group if="$(eval cam_rviz)">
