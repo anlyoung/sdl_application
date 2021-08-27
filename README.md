@@ -2,6 +2,15 @@
 
 Repository for files and applications of the sdl mobile robotic scientist at Argonne National Laboratory and University of Chicago. Should be used with the [sdl-packages](https://github.com/dsquez/sdl-packages.git) repository.
 
+## Install the AR library:
+
+`sudo apt-get install ros-melodic-ar-track-alvar`
+
+Move Gazebo models:
+```
+cp sdl-packages/sdl_gazebo/models/ar_box ~/.gazebo/models -r
+```
+
 ## Running
 
 ### Launching the Robot
